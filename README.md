@@ -1,7 +1,8 @@
 # MysqlAdminer
 ===============
 
-Quickly install Mysql with Docker in one sentence, easy to manage database with Adminer. 
+Quickly install the latest version of Mysql8 with Docker with just one command, and use Adminer to easily manage the database via web pages. Navicat or other third-party MySQL client connections are also OK.
+
 *Make the world simpler*
 
 Table of contents
@@ -117,7 +118,7 @@ rm -rf mysql
 Troubleshooting
 ---------------
 
-1. It takes tens of seconds to add -d for the first time. When you run the command "sudo docker-compose up" for the first time without the "--d" parameter, you can see the startup process information on the terminal, which helps to track the error.
+1. It takes tens of seconds to run for the first time, and logging in to MySQL before successful startup will fail. It’s getting faster from the second time. When you run the command "sudo docker-compose up" for the first time without the "-d" parameter, you can see the startup process information on the terminal, which helps to track the error.
 
 2. Check if the container is running normally.
 docker check status command:
