@@ -1,0 +1,28 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    container_name: mysql
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - "./data:/var/lib/mysql" # mysql data
+      - "./mysql:/etc/mysql" # mysql data
+      - "./log/mysqld.log:/var/log/mysql/mysqld.log" # mysql log
+      - "./log/mysql-error.log:/var/log//mysql/mysql-error.log" # error log
+      - "./log/mysql-slow.log:/var/log/mysql/mysql-slow.log" # slow log
+      - "./bak:/usr/local/bak" # backup
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: change_to_your_PWD
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 81:8080

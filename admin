@@ -1,0 +1,18 @@
+#!/bin/sh
+sudo docker exec -it mysql mysql -uroot --password=`cat docker-compose.yml |sed '/M*T_P/!'d|awk -F'[: ]+' '{print $3}'`
+# 
+# After the initial successful installation and login, You can change the password.
+#  1)
+#    $ sudo docker exec -it mysqladmin -u root -p password 'YOUR_NEW_PASSWORD!';
+#
+#  2)
+#    > use mysql；
+#    > ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'YOUR_NEW_PASSWORD';
+#    > ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'YOUR_NEW_PASSWORD';
+#    > FLUSH PRIVILEGES;
+# 
+# 
+# new login comnand line may like :
+#
+#  sudo docker exec -it mysql mysql -uroot -p'YOUR_NEW_PASSWORD'
+#
