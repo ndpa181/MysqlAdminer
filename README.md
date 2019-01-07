@@ -136,6 +136,13 @@ $ sudo docker inspect --format='{{.State.Status}}'  mysql
 Template parsing error: ...  /* sth wrong*/
 ```
 
+3. A ^M error message appears while the admin script is running.
+The line breaks used by text files are different under each operating system. UNIX/Linux uses 0x0A(LF), and earlier Mac OS used 0x0D(CR), and later OS X was consistent with UNIX after replacing the kernel. However, DOS/Windows always uses 0x0D0A (CRLF) as a newline. Git provides a "newline automatic conversion" feature. This feature is in "automatic mode" by default. When you check out a file, it tries to replace the UNIX newline character (LF) with the Windows newline character (CRLF); when you submit the file, it tries to replace CRLF with LF. Git's "Line Feed Auto-Conversion" feature sounds smart and intimate because it attempts to maintain file consistency (UNIX style) on the one hand and local file compatibility (Windows style) on the other. Unfortunately, this feature is buggy and is unlikely to be fixed in the short term.
 
+Solution: Check gitconfig before git clone. 
+```
+git config --global core.autocrlf false
+git config --global core.safecrlf true
+```
 
 
