@@ -22,6 +22,7 @@ install
 ```
 git clone https://github.com/ndpa181/MysqlAdminer mysql
 cd mysql
+chown polkitd:ssh_keys log -R
 sudo docker-compose up -d
 ```
 
